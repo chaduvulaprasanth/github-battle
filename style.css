@@ -54,6 +54,9 @@ html {
 body{
     font-family: 'Roboto', sans-serif;
 }
+*:focus {
+    outline: none;
+}
 /* .wrapper{
     max-width: 100px;
     margin: 0 auto;
@@ -63,6 +66,18 @@ body{
     /* grid-template-columns: 1fr 1fr; */
     justify-content: space-evenly;
     padding: 5rem 0;
+}
+.title-text {
+    padding-left: 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+}
+.firstresult, .secondresult{
+    padding-left: 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 2rem;
+    
 }
 #firstinput, #secondinput{
     width: 30rem;

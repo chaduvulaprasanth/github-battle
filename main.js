@@ -10,7 +10,7 @@ var firstresult = document.querySelector(".firstresult");
 var secondresult = document.querySelector(".secondresult");
 
 
-function searchCard(res){
+function firstCard(res){
     firstuserscore = `${res.public_repos}`
     firstuser.innerHTML = ` 
     <li>
@@ -29,17 +29,19 @@ function searchCard(res){
             <p>Gists ${res.public_gists}</p>
         </div>
     </li>`
+    setTimeout(() => result(), 500)
+
 }
 
 
-function gitapi(event){
+function firstapi(event){
     var xhr = new XMLHttpRequest;
     xhr.open("GET",`https://api.github.com/users/${firstinput.value}`);
-    xhr.onload = () => searchCard(JSON.parse(xhr.response));
+    xhr.onload = () => firstCard(JSON.parse(xhr.response));
     xhr.send();
 }
 
-firstinputsubmit.addEventListener("click",gitapi)
+firstinputsubmit.addEventListener("click",firstapi)
 
 
 // second user
@@ -63,7 +65,7 @@ function secondCard(res){
             <p>Gists ${res.public_gists}</p>
         </div>
     </li>`
-    setTimeout(() => result(), 1000)
+    setTimeout(() => result(), 500)
 }
 
 
@@ -80,10 +82,20 @@ secondinputsubmit.addEventListener("click",secondapi)
 function result(){
     if(firstuserscore > seconduserscore){
        firstresult.textContent = "Winner";
+       firstresult.style.color = "green";
        secondresult.textContent = "Looser";
+       secondresult.style.color = "red";
     }
-    else {
+    else if(firstuserscore < seconduserscore) {
         firstresult.textContent = "Looser";
+        firstresult.style.color = "red";
         secondresult.textContent = "Winner";
+        secondresult.style.color = "green";
+    }
+    else if(firstuserscore == seconduserscore) {
+        firstresult.textContent = "Equal";
+        firstresult.style.color = "blue";
+        secondresult.textContent = "Equal";
+        secondresult.style.color = "blue";
     }
 }
